@@ -60,7 +60,6 @@ def show_recipes():
     else:
         flavor_name = "Asian Garlic Tofu"
 
-    try:
         print flavor_name
         conn = mysql.connect()
         cur = conn.cursor()
@@ -70,11 +69,6 @@ def show_recipes():
         print entries
         conn.close()
         error = None
-        return render_template('content.html', entries=entries, error=error)
-    except Exception as e:
-        print str(e)
-        entries = None
-        error = 'Database Connection Error!'
         return render_template('content.html', entries=entries, error=error)
 
 
