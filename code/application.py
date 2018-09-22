@@ -71,6 +71,7 @@ def show_recipes():
     entries = []
     count = 0
     for group in satisfied_recipes:
+        print group[i]
         templist = []
         for i in range(0,3):
             cur.execute("SELECT name, cuisine, provider, big_image, ingredient_amount FROM recipe_info WHERE  dbscan_label = %s;", [group[i], cur_flavor])
