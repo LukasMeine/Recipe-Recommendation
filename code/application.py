@@ -73,7 +73,7 @@ def show_recipes():
     
     print satisfied_recipes
     
-    for group in satisfied_recipes:
+    for group in satisfied_recipes[:20]:
        
        
         templist = []
@@ -82,7 +82,7 @@ def show_recipes():
             cur.execute("SELECT name, cuisine, provider, big_image, ingredient_amount FROM recipe_info WHERE nutrition = %s and dbscan_label = %s;", [group[i], cur_flavor])
             temp = cur.fetchall()
             #print temp
-            templist = append(temp)
+            templist.append(temp)
         
         entries.append(templist)
         print templist
