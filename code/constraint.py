@@ -29,7 +29,6 @@ def constraint_EER(my_nutrition, age, weight, height, gender, activity_level, st
 def nutritional_constraints(yum, age, weight, height, gender, activity_level):
     yum_list=[]
     standard = nutrition(age, weight, height, gender, activity_level)
-    print standart
     standard = [standard[i]/2.7 for i in range(len(standard))]
     nutrition_list=['ENERC_KJ', 'PROCNT', 'CHOCDF', 'FIBTG', 'FAT', 'CA', 'FE', 'MG', 'P', 'K',\
                     'NA', 'ZN', 'MN', 'SE', 'VITA_RAE', 'TOCPHA', 'VITC', 'RIBF', 'NIA', 'VITB6A', 'BITB12'
