@@ -83,8 +83,9 @@ def show_recipes():
             temp = cur.fetchall()
             #print temp
             templist.append(temp)
-        print temp
+        
         entries.append(templist)
+        print entries
         count = count + 1
         if count > 3 :
             break
