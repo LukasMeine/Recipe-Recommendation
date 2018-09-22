@@ -85,6 +85,7 @@ def show_recipes():
             break
     conn.close()
     #return render_template('content.html', entries=entries, error=error)
+    print entries
     return render_template('recipeRecommend.html', entries=entries, error=error)
 """
     try:
