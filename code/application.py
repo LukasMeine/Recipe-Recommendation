@@ -81,7 +81,7 @@ def show_recipes():
             templist.append(temp)
         entries.append(templist)
         count = count + 1
-        if count > 4:
+        if count > 3:
             break
     conn.close()
     #return render_template('content.html', entries=entries, error=error)
