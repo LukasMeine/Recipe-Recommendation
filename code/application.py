@@ -71,7 +71,7 @@ def show_recipes():
     entries = []
     count = 0
     
-    print satisfied_recipes
+    print satisfied_recipes[:20]
     
     for group in satisfied_recipes[:20]:
        
