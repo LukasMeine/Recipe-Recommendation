@@ -75,7 +75,6 @@ def show_recipes():
     
     for group in satisfied_recipes:
        
-        print len(group)
        
         templist = []
         for i in range(0,3):
@@ -84,9 +83,10 @@ def show_recipes():
             temp = cur.fetchall()
             #print temp
             templist.append(temp)
+        print temp
         entries.append(templist)
         count = count + 1
-        if count > 3:
+        if count > 12:
             break
     conn.close()
     #return render_template('content.html', entries=entries, error=error)
