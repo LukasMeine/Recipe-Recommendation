@@ -64,6 +64,7 @@ def show_recipes():
     print cur_flavor
     cur.execute("SELECT  nutrition FROM recipe_info WHERE dbscan_label = %s;", [cur_flavor])
     fetch_result = cur.fetchall()
+    print fetch_result
     satisfied_recipes = constraint.nutritional_constraints(fetch_result, cur_age, cur_weight, cur_height, cur_gender, 'Active')
     print satisfied_recipes
     # provider, big_image
