@@ -85,7 +85,7 @@ def show_recipes():
             templist = append(temp)
         
         entries.append(templist)
-        print entries
+        print templist
         count = count + 1
         if count > 3 :
             break
