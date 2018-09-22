@@ -77,7 +77,7 @@ def show_recipes():
              print group[i]
             cur.execute("SELECT name, cuisine, provider, big_image, ingredient_amount FROM recipe_info WHERE  dbscan_label = %s;", [ cur_flavor])
             temp = cur.fetchall()
-            print temp
+            #print temp
             templist.append(temp)
         entries.append(templist)
         count = count + 1
