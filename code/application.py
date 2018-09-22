@@ -73,7 +73,7 @@ def show_recipes():
     for group in satisfied_recipes:
        
         templist = []
-        for i in range(0,3):
+        for i in range(0,12):
             print group[i]
             cur.execute("SELECT name, cuisine, provider, big_image, ingredient_amount FROM recipe_info WHERE nutrition = %s and dbscan_label = %s;", [group[i], cur_flavor])
             temp = cur.fetchall()
@@ -81,7 +81,7 @@ def show_recipes():
             templist.append(temp)
         entries.append(templist)
         count = count + 1
-        if count > 3:
+        if count > 12;
             break
     conn.close()
     #return render_template('content.html', entries=entries, error=error)
