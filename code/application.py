@@ -66,10 +66,10 @@ def show_recipes():
         cur.execute("SELECT nutrition FROM recipe_info WHERE dbscan_label = %s;", [cur_flavor])
         fetch_result = cur.fetchall()
         entries = constraint.nutritional_constraints(fetch_result, cur_age, cur_weight, cur_height, cur_gender, 'Active')
-        print entries
+        print entries[:20]
         conn.close()
         error = None
-        return render_template('recipeRecommend.html', entries=entries, error=error)
+        return render_template('recipeRecommend.html', entries=entries[:20], error=error)
 
 
 
