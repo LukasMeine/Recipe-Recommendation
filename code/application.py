@@ -60,44 +60,6 @@ def show_recipes():
     else:
         flavor_name = "Asian Garlic Tofu"
 
-    conn = mysql.connect()
-    cur = conn.cursor()
-    print cur_flavor
-    cur.execute("SELECT DISTINCT nutrition FROM recipe_info WHERE dbscan_label = %s;", [cur_flavor])
-    fetch_result = cur.fetchall()
-    satisfied_recipes = constraint.nutritional_constraints(fetch_result, cur_age, cur_weight, cur_height, cur_gender, 'Active')
-    
-    # provider, big_image
-    error = None
-    entries = []
-    count = 0
-    
-    print satisfied_recipes[:20]
-    
-    for group in satisfied_recipes[:20]:
-       
-       
-        templist = []
-        for i in range(0,3):
-            
-            identifier = 879879879879
-            cur.execute("SELECT num, name, cuisine, provider, big_image, ingredient_amount FROM recipe_info WHERE nutrition = %s and dbscan_label = %s and num <> %s;", [group[i], cur_flavor, identifier])
-            temp = cur.fetchall()
-            identifier = [column[0] for column in cur.fetchall()]
-            print identifier
-            #print temp
-            templist.append(temp)
-        
-        entries.append(templist)
-        print templist
-        count = count + 1
-        if count > 3 :
-            break
-    conn.close()
-    #return render_template('content.html', entries=entries, error=error)
-
-    return render_template('recipeRecommend.html', entries=entries, error=error)
-"""
     try:
         conn = mysql.connect()
         cur = conn.cursor()
@@ -113,7 +75,7 @@ def show_recipes():
         entries = None
         error = 'Database Connection Error!'
         return render_template('content.html', entries=entries, error=error)
-"""
+
 
 
 @application.route('/', methods=['GET', 'POST'])
