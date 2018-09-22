@@ -61,6 +61,7 @@ def show_recipes():
         flavor_name = "Asian Garlic Tofu"
 
     try:
+        print flavor_name
         conn = mysql.connect()
         cur = conn.cursor()
         cur.execute("SELECT * FROM recipe_info WHERE dbscan_label = %s;", [cur_flavor])
