@@ -75,7 +75,7 @@ def show_recipes():
     
     for group in satisfied_recipes:
        
-       print len(group)
+        print len(group)
        
         templist = []
         for i in range(0,12):
