@@ -39,7 +39,7 @@ def nutritional_constraints(yum, age, weight, height, gender, activity_level):
     n_nutrition= len(nutrition_list)
     for recipe in yum:
         my_nutrition=[0 for i in range(n_nutrition)]
-        temp_list = ast.literal_eval(recipe[1]) # convert unicode to python list of dictionary
+        temp_list = ast.literal_eval(recipe[0]) # convert unicode to python list of dictionary
         for element in temp_list:
             for i in range(n_nutrition):
                 if element['attribute'] == nutrition_list[i]:
