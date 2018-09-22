@@ -69,7 +69,7 @@ def show_recipes():
         print entries
         conn.close()
         error = None
-        return render_template('content.html', entries=entries, error=error)
+        return render_template('recipeRecommend.html', entries=entries, error=error)
 
 
 
