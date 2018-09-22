@@ -84,9 +84,9 @@ def show_recipes():
         if count > 3:
             break
     conn.close()
-    return render_template('content.html', entries=entries, error=error)
+    #return render_template('content.html', entries=entries, error=error)
 
-    #return render_template('recipeRecommend.html', entries=entries, error=error)
+    return render_template('recipeRecommend.html', entries=entries, error=error)
 """
     try:
         conn = mysql.connect()
