@@ -71,7 +71,7 @@ def show_recipes():
     entries = []
     count = 0
     
-    print len(satisfied_recipes)
+    print satisfied_recipes
     
     for group in satisfied_recipes:
        
