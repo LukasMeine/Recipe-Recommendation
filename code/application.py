@@ -80,7 +80,6 @@ def show_recipes():
         templist = []
         for i in range(0,3):
             
-            identifier = 879879879879
             cur.execute("SELECT num, name, cuisine, provider, big_image, ingredient_amount FROM recipe_info WHERE nutrition = %s and dbscan_label = %s and num <> %s;", [group[i], cur_flavor, identifier])
             temp = cur.fetchall()
             templist.append(temp)
