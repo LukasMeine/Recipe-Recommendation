@@ -44,7 +44,7 @@ def nutritional_constraints(yum, age, weight, height, gender, activity_level):
             for i in range(n_nutrition):
                 if element['attribute'] == nutrition_list[i]:
                     my_nutrition[i] = element['value']*unit_ratio[i] #/recipe[14]
-        yum_list.append([recipe[0], my_nutrition])
+        yum_list.append([recipe[1], my_nutrition])
     N=len(yum_list)
     satisfied_list=[]
     for i in range(N):
