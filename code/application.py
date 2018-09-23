@@ -1,6 +1,5 @@
 # all the imports
 import os
-import json
 import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
@@ -24,10 +23,10 @@ application.config['MYSQL_DATABASE_PASSWORD'] = 'FriApr14'
 application.config['MYSQL_DATABASE_DB'] = 'recipe'
 application.config['MYSQL_DATABASE_HOST'] = 'localhost'
 """
-application.config['MYSQL_DATABASE_USER'] = 'root'
-application.config['MYSQL_DATABASE_PASSWORD'] = ''
-application.config['MYSQL_DATABASE_DB'] = 'hack'
-application.config['MYSQL_DATABASE_HOST'] = 'localhost'
+application.config['MYSQL_DATABASE_USER'] = 'flourishlove'
+application.config['MYSQL_DATABASE_PASSWORD'] = 'MonApr17'
+application.config['MYSQL_DATABASE_DB'] = 'recipe'
+application.config['MYSQL_DATABASE_HOST'] = 'reciperecommendation.cky4qlh0i2dz.us-east-1.rds.amazonaws.com'
 #application.config['MYSQL_DATABASE_PORT'] = 3306
 
 mysql.init_app(application)
@@ -62,36 +61,27 @@ def show_recipes():
 
     conn = mysql.connect()
     cur = conn.cursor()
-    print cur_flavor
-    cur.execute("SELECT ingredient_amount,nutrition FROM recipe_info WHERE dbscan_label = %s;", [cur_flavor])
+    cur.execute("SELECT ingredient_amount, nutrition FROM recipe_info WHERE dbscan_label = %s;", [cur_flavor])
     fetch_result = cur.fetchall()
     satisfied_recipes = constraint.nutritional_constraints(fetch_result, cur_age, cur_weight, cur_height, cur_gender, 'Active')
-    
+    print satisfied_recipes
     # provider, big_image
     error = None
     entries = []
     count = 0
-    
-    print satisfied_recipes[:3]
-    
-    for group in satisfied_recipes[:3]:
-       
-       
+    for group in satisfied_recipes:
         templist = []
         for i in range(0,3):
-            
             cur.execute("SELECT name, cuisine, provider, big_image, ingredient_amount FROM recipe_info WHERE ingredient_amount = %s and dbscan_label = %s;", [group[i], cur_flavor])
             temp = cur.fetchall()
+            print temp
             templist.append(temp)
-        
         entries.append(templist)
-        print templist
         count = count + 1
-        if count > 3 :
+        if count > 3:
             break
     conn.close()
     #return render_template('content.html', entries=entries, error=error)
-
     return render_template('recipeRecommend.html', entries=entries, error=error)
 """
     try:
@@ -131,4 +121,4 @@ if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     application.debug = True
-    application.run(host = "10.0.1.140", port = 80)
+    application.run()
