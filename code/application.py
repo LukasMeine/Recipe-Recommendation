@@ -61,7 +61,7 @@ def show_recipes():
 
     conn = mysql.connect()
     cur = conn.cursor()
-    cur.execute("SELECT flavor, nutrition FROM recipe_info WHERE dbscan_label = %s;", [cur_flavor])
+    cur.execute("SELECT course_cuisine, nutrition FROM recipe_info WHERE dbscan_label = %s;", [cur_flavor])
     fetch_result = cur.fetchall()
     satisfied_recipes = constraint.nutritional_constraints(fetch_result, cur_age, cur_weight, cur_height, cur_gender, 'Active')
     print satisfied_recipes
@@ -72,7 +72,7 @@ def show_recipes():
     for group in satisfied_recipes:
         templist = []
         for i in range(0,3):
-            cur.execute("SELECT name, cuisine, provider, big_image, ingredient_amount FROM recipe_info WHERE flavor = %s and dbscan_label = %s;", [group[i], cur_flavor])
+            cur.execute("SELECT name, cuisine, provider, big_image, ingredient_amount FROM recipe_info WHERE course_cuisine = %s and dbscan_label = %s;", [group[i], cur_flavor])
             temp = cur.fetchall()
             print temp
             templist.append(temp)
