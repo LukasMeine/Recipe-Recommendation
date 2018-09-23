@@ -62,6 +62,7 @@ def show_recipes():
     conn = mysql.connect()
     cur = conn.cursor()
     cur.execute("SELECT ingredient_amount, nutrition FROM recipe_info WHERE dbscan_label = %s;", [cur_flavor])
+    print(cur.fetchall())
     fetch_result = cur.fetchall()
     satisfied_recipes = constraint.nutritional_constraints(fetch_result, cur_age, cur_weight, cur_height, cur_gender, 'Active')
     print satisfied_recipes
